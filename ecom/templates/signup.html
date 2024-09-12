@@ -1,0 +1,114 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="container-fluid mt-5 bd" style="">
+<center>
+  <div class="singdiv">
+    <h2 class="signhead">Signup Here</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table cellspacing="5px" cellpadding="5px">
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="username" class="singuser"> Username</label>
+                    </div>
+                </td>
+                <td>
+                    {{form.username}}
+                </td>
+                <td>
+                    {% for error in form.username.errors %}
+                    <span class="invalid-feedback d-block">{{ error }}</span>
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="firstname" class="singuser"> First Name</label>
+                    </div>
+                </td>
+                <td>
+                   {{form.first_name}}
+                </td>
+                <td>
+                    {% for error in form.first_name.errors %}
+                    <span class="invalid-feedback d-block">{{ error }}</span>
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="lastname" class="singuser"> Last Name</label>
+                    </div>
+                </td>
+                <td>
+                   {{form.last_name}}
+                </td>
+                <td>
+                    {% for error in form.last_name.errors %}
+                    <span class="invalid-feedback d-block">{{ error }}</span>
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="Email" class="singuser">Email</label>
+                    </div>
+                </td>
+                <td>
+                    {{form.email}}
+                </td>
+                <td>
+                    {% for error in form.email.errors %}
+                    <span class="invalid-feedback d-block">{{ error }}</span>
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="password1" class="singuser">Password</label>
+                    </div>
+                </td>
+                <td>
+                    {{form.password1}}
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="password2" class="singuser">Re-enter Password</label>
+                    </div>
+                </td>
+                <td>
+                    {{form.password2}}
+                </td>
+            </tr>
+        </table>
+        <span class="invalid-feedback d-block" style="font-size: 11px;">
+            {% for error in form.password2.errors %}
+                {{ error }}
+            {% endfor %}
+            {% for error in form.password1.errors %}
+                <span class="invalid-feedback d-block">{{ error }}</span>
+            {% endfor %}
+
+            {% if messages %}
+                {% for i in messages %}
+                      <p style="color:green"> {{i}} </p>
+                {% endfor %}
+            {% endif %}
+        </span>
+        <button type="submit" class="mt-5 bg-primary signbutton" >Sign up</button><br>
+        <a href="{% url 'login' %}" class="btn btn-primary mt-2 logbutton" >Login</a>   
+    </form>
+   </div>
+  </center>
+</div>
+{% endblock %}

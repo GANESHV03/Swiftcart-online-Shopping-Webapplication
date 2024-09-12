@@ -1,0 +1,84 @@
+{% extends 'main.html' %}
+{% block content %}
+    <section style="margin-top:100px;margin-bottom:100px">
+        <div class="container">
+         <center>
+            <div class="logindiv">
+                <h2 class="loginhead" >Log In Here</h2>
+                <form action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
+                    <table cellpadding="5px" cellspacing="5px">
+                        <tr>
+                            <td>
+                             <div class="form-group">
+                             <label for="username" class="loguname">Username</label>
+                             </div>
+                            </td>
+                            <td>
+                                {{fm.username}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <label for="password" class="logpass">Password</label>
+                                </div>
+                            </td>
+                            <td>
+                                {{fm.password}}
+                                
+                            </td>
+                        </tr>
+                    </table>
+                    {% if fm.username.errors %}    
+                       <p style="color:red;font-size:15px;">invalid credentials </p>
+                    {% endif %}
+                     {% if fm.password.errors %}    
+                       <p style="color:red;font-size:15px;">invalid credentials </p>
+                    {% endif %}
+                    <button type="submit" class=" bt btn-primary mt-5" style="padding:10px;width: 300px;border-radius: 10px;font-weight: bold;background-color:rgb(59, 59, 250);font-size:15px;">Log in</button><br>
+                    <p>Already have? <a href="{% url 'signup' %}">signup</a></p>   
+                </form>
+            </div>
+          </center>  
+        </div>
+    </section>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
